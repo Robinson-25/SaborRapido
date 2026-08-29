@@ -1,0 +1,36 @@
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
+
+import platosRouter from "./routes/platos.js";
+import authRouter from "./routes/auth.js";
+
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+const origenesPermitidos = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: origenesPermitidos,
+  })
+);
+app.use(express.json());
+
+app.get("/api/salud", (req, res) => {
+  res.json({ ok: true, mensaje: "API Sabor Rápido funcionando 🍔" });
+});
+
+app.use("/api/auth", authRouter);
+app.use("/api/platos", platosRouter);
+
+app.use((req, res) => {
+  res.status(404).json({ error: "Ruta no encontrada." });
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ API corriendo en http://localhost:${PORT}`);
+});

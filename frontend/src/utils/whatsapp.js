@@ -1,4 +1,4 @@
-const NUMERO_WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMERO || "51927165123";
+const NUMERO_WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMERO || "51993942839";
 
 export function construirLinkWhatsApp(items, total) {
   const lineas = items.map(

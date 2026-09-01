@@ -29,14 +29,14 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
 
   return (
     <form onSubmit={manejarEnvio} className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div className="flex flex-col gap-1">
           <label className="text-sm font-medium text-zinc-700">Nombre del plato</label>
           <input
             required
             value={form.nombre}
             onChange={(e) => actualizarCampo("nombre", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           />
         </div>
 
@@ -45,7 +45,7 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
           <select
             value={form.categoria}
             onChange={(e) => actualizarCampo("categoria", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           >
             <option value="desayuno">Desayuno</option>
             <option value="almuerzo">Almuerzo</option>
@@ -59,11 +59,11 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
         <textarea
           value={form.descripcion}
           onChange={(e) => actualizarCampo("descripcion", e.target.value)}
-          className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400 min-h-20"
+          className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 min-h-20 w-full"
         />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
         <div className="flex flex-col gap-1">
           <label className="text-sm font-medium text-zinc-700">Precio (S/)</label>
           <input
@@ -71,9 +71,10 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
             type="number"
             step="0.01"
             min="0"
+            inputMode="decimal"
             value={form.precio}
             onChange={(e) => actualizarCampo("precio", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           />
         </div>
 
@@ -82,9 +83,10 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
           <input
             type="number"
             min="0"
+            inputMode="numeric"
             value={form.calorias}
             onChange={(e) => actualizarCampo("calorias", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           />
         </div>
 
@@ -93,7 +95,7 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
           <input
             value={form.emoji}
             onChange={(e) => actualizarCampo("emoji", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           />
         </div>
 
@@ -102,7 +104,7 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
           <select
             value={form.etiqueta}
             onChange={(e) => actualizarCampo("etiqueta", e.target.value)}
-            className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+            className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
           >
             <option value="">Sin etiqueta</option>
             <option value="Más Vendida">Más Vendida</option>
@@ -120,16 +122,16 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
           value={form.imagen}
           onChange={(e) => actualizarCampo("imagen", e.target.value)}
           placeholder="https://..."
-          className="border border-zinc-300 rounded-xl px-4 py-2.5 outline-none focus:border-orange-400"
+          className="border border-zinc-300 rounded-xl px-3 sm:px-4 py-2.5 outline-none focus:border-orange-400 w-full"
         />
       </div>
 
-      <div className="flex gap-3 justify-end mt-2">
+      <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end mt-2">
         {onCancelar && (
           <button
             type="button"
             onClick={onCancelar}
-            className="px-5 py-2.5 rounded-full font-medium text-zinc-600 hover:bg-zinc-100"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-full font-medium text-zinc-600 hover:bg-zinc-100"
           >
             Cancelar
           </button>
@@ -137,7 +139,7 @@ export default function PlatoForm({ platoInicial, onGuardar, onCancelar, guardan
         <button
           type="submit"
           disabled={guardando}
-          className="bg-gradient-to-r from-orange-400 to-orange-800 text-zinc-100 px-6 py-2.5 rounded-full font-bold disabled:opacity-60"
+          className="w-full sm:w-auto bg-gradient-to-r from-orange-400 to-orange-800 text-zinc-100 px-6 py-2.5 rounded-full font-bold disabled:opacity-60"
         >
           {guardando ? "Guardando..." : "Guardar plato"}
         </button>
